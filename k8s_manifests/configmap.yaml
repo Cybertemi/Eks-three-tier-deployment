@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: three-tier-app-config
+  namespace: workshop
+data:
+  FRONTEND_URL: "http://three-tier-app-frontend"
+  BACKEND_URL: "http://three-tier-app-backend:5000"
+  MONGO_URI: "mongodb://mongo:27017/appdb"

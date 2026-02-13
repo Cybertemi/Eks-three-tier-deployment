@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: workshop
+  labels:
+    role: backend
+    env: demo
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      role: backend
+
+  template:
+    metadata:
+      labels:
+        role: backend
+
+    spec:
+      containers:
+        - name: backend
+          image: cytemi5000/three-tier-backend:v1
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 5000
+
+          envFrom:
+            - configMapRef:
+                name: three-tier-app-config
+
+        
+

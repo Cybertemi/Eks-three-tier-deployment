@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: workshop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: cytemi5000/three-tier-frontend:v1
+        ports:
+        - containerPort: 8085
+        env:
+        - name: THREE-TIER-APP-BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: three-tier-app-config
+              key: BACKEND_URL
