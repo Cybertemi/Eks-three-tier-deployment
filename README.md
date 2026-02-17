@@ -11,12 +11,20 @@ The application is fully containerized using Docker and orchestrated with Kubern
 ### Architecture
 
 Users (Browser)
+
+
       ↓
 LoadBalancer Service
+
+
       ↓
 Frontend (Nginx)
+
+
       ↓
 Backend API (Node.js)
+
+
       ↓
 MongoDB Database
 
